@@ -71,10 +71,6 @@ class ElasUsam(models.Model):
     galery = models.ManyToManyField(Images)
     created_by = models.ForeignKey(User)
     slug = models.SlugField()
-
-    def save(self, *args, **kwargs):
-        self.image_thumbnail = self.image
-        super(Images, self).save(*args, **kwargs)
         
     class Meta:
         verbose_name = "Elas Usam"
@@ -91,10 +87,6 @@ class Eventos(models.Model):
     galery = models.ManyToManyField(Images)
     created_by = models.ForeignKey(User)
     slug = models.SlugField()
-
-    def save(self, *args, **kwargs):
-        self.image_thumbnail = self.image
-        super(Images, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Evento"

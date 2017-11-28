@@ -13,7 +13,7 @@ SECRET_KEY = '5$1jj@8fm1(&&or8h%=fypk5%l33_9$th-)s@+^tr@sar-e7rq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'georginanogueira.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,10 +63,25 @@ WSGI_APPLICATION = 'georginanogueira.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'gn',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_gn',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'PASSWORD': '',
     }
 }
 
@@ -92,9 +107,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
+
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Fortaleza'
+
+DEFAULT_CHARSET='utf-8'
 
 USE_I18N = True
 
@@ -102,13 +120,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/assets/static/'
-STATIC_ROOT = '/home/naerthon/georginanogueira/assets/static'
 
-MEDIA_URL = '/assets/media/'
-MEDIA_ROOT = '/home/naerthon/georginanogueira/assets/media'
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
