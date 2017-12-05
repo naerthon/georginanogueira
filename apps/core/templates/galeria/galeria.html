@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Portfolio / gallery-->
+<section id="portfolio" class="gallery">
+  <div class="container clearfix">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <h2 class="heading">Galeria</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+          </div>
+        </div>
+
+        <div class="row">
+          {%for row in rows%}
+          <div class="col-sm-4">
+            <div class="box"><a href="{{row.image.url}}" title="" data-toggle="lightbox" data-gallery="portfolio" data-title="{{row.title}}" data-footer="{{row.desc}}"><img src="{{row.image_thumbnail.url}}" alt="" class="img-responsive"></a></div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Portfolio / gallery end-->
+{% endblock %}

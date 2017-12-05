@@ -32,29 +32,29 @@ class Images(models.Model):
         self.image_thumbnail = self.image
         super(Images, self).save(*args, **kwargs)
 
-    def save(self, *args, **kwargs):
+    def save_slug(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Images, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = "Foto"
-        verbose_name_plural = "Fotos"
+        verbose_name = "Galeria"
+        verbose_name_plural = "Galerias"
 
     def __str__(self):
         return self.title
 
 class Colecoes(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField()
     desc = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     galery = models.ManyToManyField(Images)
     created_by = models.ForeignKey(User)
-    slug = models.SlugField()
 
     def save(self, *args, **kwargs):
-        self.image_thumbnail = self.image
-        super(Images, self).save(*args, **kwargs)
+        self.slug = slugify(self.title)
+        super(Colecoes, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Coleção"
@@ -88,6 +88,10 @@ class Eventos(models.Model):
     created_by = models.ForeignKey(User)
     slug = models.SlugField()
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Eventos, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Evento"
         verbose_name_plural = "Eventos"
@@ -108,4 +112,4 @@ class Email(models.Model):
         verbose_name_plural = "Email"
 
     def __str__(self):
-        return self.title
+        return self.full_name
