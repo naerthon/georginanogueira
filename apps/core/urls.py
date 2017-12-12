@@ -9,7 +9,7 @@ urlpatterns = [
 	url(r'^contato/$', contato, name='contato'),
 	url(r'^eventos/$', eventos, name='all-eventos'),
 	url(r'^eventos/(?P<slug>[\w-]+)/$', detail_eventos, name='detail-eventos'),
-	url(r'^colecoes/(?P<slug>[\w-]+)/$', detail_colecoes, name='detail-colecoes'),
+	url(r'^colecoes/(?P<slug>[\w-]+)/$', detail_colecoes, name='detalhe-colecoes'),
 ]
 
 if settings.DEBUG:
