@@ -30,6 +30,12 @@ def detail_eventos(request,slug):
     context = dict(submenu=submenu(),rows=rows)
     return render(request,template_name,context)
 
+def detail_colecoes(request,slug):
+    template_name = 'colecoes/detalhe.html'
+    rows = Colecoes.objects.get(slug=slug)
+    context = dict(submenu=submenu(),rows=rows)
+    return render(request,template_name,context)
+
 def contato(request):
     template_name = 'contato/contato.html'
     forms = EmailForm(request.POST)
