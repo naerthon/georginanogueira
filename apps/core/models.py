@@ -87,7 +87,11 @@ class Galeria(models.Model):
     galery = models.ManyToManyField(Images)
     created_by = models.ForeignKey(User)
     slug = models.SlugField()
-        
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Galeria, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Galeria"
         verbose_name_plural = "Galerias"
