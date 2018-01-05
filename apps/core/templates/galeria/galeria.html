@@ -24,7 +24,7 @@
           <div class="caption">
             <h3><a href="{% url 'core:detail-galeria' slug=row.slug %}">{{row.title}}</a></h3>
             <p class="flex-text text-muted">{{row.desc}}</p>
-            <p><a class="btn btn-primary" href="{% url 'core:detail-galeria' slug=row.slug %}">{{row.published_date|date:"Y"}}</a></p>
+            <p><a class="btn btn-primary" href="{% url 'core:detail-galeria' slug=row.slug %}">{{row.date|date:"Y"}}</a></p>
           </div>
         </div>
       </div>
