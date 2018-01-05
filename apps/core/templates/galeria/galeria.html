@@ -24,7 +24,7 @@
           <div class="caption">
             <h3><a href="{% url 'core:detail-colecoes' slug=menu.slug %}">{{menu.title}}</a></h3>
             <p class="flex-text text-muted">{{menu.desc}}</p>
-            <p><a class="btn btn-primary" href="{% url 'core:detail-colecoes' slug=menu.slug %}">{{menu.date|date:"Y"}}</a></p>
+            <p><a class="btn btn-primary" href="{% url 'core:detail-colecoes' slug=menu.slug %}">{{menu.published_date|date:"Y"}}</a></p>
           </div>
         </div>
       </div>
