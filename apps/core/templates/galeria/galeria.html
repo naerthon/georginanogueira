@@ -19,10 +19,13 @@
         </div>
 
         <div class="row">
-          {%for row in rows%}
-          <div class="col-sm-4">
-            <div class="box"><a href="{{row.image.url}}" title="" data-toggle="lightbox" data-gallery="portfolio" data-title="{{row.title}}" data-footer="{{row.desc}}"><img src="{{row.image_thumbnail.url}}" alt="" class="img-responsive"></a></div>
-          </div>
+          {% for menu in submenu %}
+          <a href="{% url 'core:detail-colecoes' slug=menu.slug %}">
+          {% with menu.galery.all|first as first_image %}
+          <img src="{{first_image.image.url}}" alt="" class="img-responsive">
+          {{menu}}
+          {% endwith %}
+          </a>
           {% endfor %}
         </div>
       </div>
