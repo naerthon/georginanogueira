@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db 		import models
 from django.contrib.auth.models import User
-from .models import Images, Colecoes,ElasUsam,Eventos,Email
+from .models import Images, Colecoes,ElasUsam,Eventos,Email,Galeria
 from .forms import EmailForm
 
 
@@ -21,10 +21,13 @@ class ColecoesAdmin(admin.ModelAdmin):
 
 class ElasUsamAdmin(admin.ModelAdmin):
     fields = ('title','desc','created_date','published_date','galery','created_by',)
+
+class GaleriaAdmin(admin.ModelAdmin):
+    fields = ('title','desc','created_date','date','galery','created_by',)
     
     def render_change_form(self, request, context, *args, **kwargs):
         context['adminform'].form.fields['created_by'].initial = request.user
-        return super(ElasUsamAdmin, self).render_change_form(request, context, args, kwargs) 
+        return super(GaleriaAdmin, self).render_change_form(request, context, args, kwargs) 
 
 class EventosAdmin(admin.ModelAdmin):
     fields = ('title','desc','date','galery','created_by',)
@@ -39,6 +42,7 @@ class EmailAdmin(admin.ModelAdmin):
 admin.site.register(Images, ImagesAdmin)
 admin.site.register(Colecoes, ColecoesAdmin)
 admin.site.register(ElasUsam, ElasUsamAdmin)
+admin.site.register(Galeria, GaleriaAdmin)
 admin.site.register(Eventos, EventosAdmin)
 admin.site.register(Email, EmailAdmin)
 

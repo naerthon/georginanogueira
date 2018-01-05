@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Images, Eventos,Colecoes
+from .models import Images, Eventos, Colecoes, Galeria
 from .forms import EmailForm
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -14,7 +14,7 @@ def index(request):
 
 def galeria(request):
     template_name = 'galeria/galeria.html'
-    rows = Images.objects.all()
+    rows = Galeria.objects.all()
     context = dict(submenu=submenu(),rows=rows)
     return render(request,template_name,context)
 
@@ -33,6 +33,12 @@ def detail_eventos(request,slug):
 def detail_colecoes(request,slug):
     template_name = 'colecoes/detalhe.html'
     rows = Colecoes.objects.get(slug=slug)
+    context = dict(submenu=submenu(),rows=rows)
+    return render(request,template_name,context)
+
+def detail_galeria(request,slug):
+    template_name = 'galeria/detalhe.html'
+    rows = Galeria.objects.get(slug=slug)
     context = dict(submenu=submenu(),rows=rows)
     return render(request,template_name,context)
 

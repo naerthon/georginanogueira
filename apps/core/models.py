@@ -37,8 +37,8 @@ class Images(models.Model):
         super(Images, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = "Galeria"
-        verbose_name_plural = "Galerias"
+        verbose_name = "Imagem"
+        verbose_name_plural = "Imagens"
 
     def __str__(self):
         return self.title
@@ -75,6 +75,22 @@ class ElasUsam(models.Model):
     class Meta:
         verbose_name = "Elas Usam"
         verbose_name_plural = "Elas Usam"
+
+    def __str__(self):
+        return self.title
+
+class Galeria(models.Model):
+    title = models.CharField(max_length=100)
+    desc = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(blank=True, null=True)
+    galery = models.ManyToManyField(Images)
+    created_by = models.ForeignKey(User)
+    slug = models.SlugField()
+        
+    class Meta:
+        verbose_name = "Galeria"
+        verbose_name_plural = "Galerias"
 
     def __str__(self):
         return self.title
