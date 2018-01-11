@@ -3,7 +3,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import index, comocomprar, galeria, contato, eventos,detail_eventos,detail_colecoes,detail_galeria
 
-
 urlpatterns = [
 	url(r'^$', index, name='index'),
 	url(r'^galeria/$', galeria, name='all-galeria'),
