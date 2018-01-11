@@ -3,6 +3,7 @@ from .models import Images, Eventos, Colecoes, Galeria
 from .forms import EmailForm
 from django.http import HttpResponse, HttpResponseRedirect
 
+
 def submenu():
     menu = Colecoes.objects.all()
     return menu
