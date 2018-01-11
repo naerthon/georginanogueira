@@ -12,6 +12,11 @@ def index(request):
     context = dict(submenu=submenu())
     return render(request,template_name,context)
 
+def comocomprar(request):
+    template_name = 'comocomprar.html'
+    context = dict(submenu=submenu())
+    return render(request,template_name,context)
+
 def galeria(request):
     template_name = 'galeria/galeria.html'
     rows = Galeria.objects.all()

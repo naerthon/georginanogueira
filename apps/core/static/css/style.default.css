@@ -995,3 +995,11 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+
+.comprar .container p {
+  color: #7A0014;
+}
+
+.comprar li {
+  color: #7A0014;
+}
