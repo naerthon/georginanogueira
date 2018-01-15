@@ -4,21 +4,18 @@
 <!-- Portfolio / gallery-->
 <section id="portfolio" class="gallery">
   <div class="container clearfix">
-    <div class="menu">
+    <div class="row">
       <div class="col-md-12">
-        <div class="menu">
-          <div class="col-md-12 col-lg-8">
-            <h2 class="heading">{% block title %}Galeria{% endblock %}</h2>
-          </div>
-        </div>
-
-    <div class="menu">
+        <h2 class="heading">{% block title %}Galeria{% endblock %}</h2>
+      </div>
+    </div>
+    <div class="row">
       {%for row in rows %}
       <div class="thumbnail col-xs-6 col-sm-4 col-lg-12">
         <div class="col-xs-6 col-sm-4 col-lg-6">
-            {% with row.galery.all|first as first_image %}
-            <a href="{% url 'core:detail-galeria' slug=row.slug %}"><img src="{{first_image.image.url}}" alt="" class="img-responsive"></a>
-            {% endwith %}
+          {% with row.galery.all|first as first_image %}
+          <a href="{% url 'core:detail-galeria' slug=row.slug %}"><img src="{{first_image.image.url}}" alt="" class="img-responsive"></a>
+          {% endwith %}
         </div>
         <div class="col-xs-6 col-sm-4 col-lg-6">
           <div class="caption">
@@ -29,8 +26,6 @@
         </div>
       </div>
       {% endfor %}
-    </div>
-      </div>
     </div>
   </div>
 </section>

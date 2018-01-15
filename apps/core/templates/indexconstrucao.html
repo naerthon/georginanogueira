@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- intro-->
+<section id="intro" style="background-image: url({% static 'img/slider-Georgia.png' %});" class="intro">      
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="container clearfix">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12">
+          <p class="italic">Oh, hello, nice to meet you!</p>
+          <h1>I am B&W Landing page or portfolio Theme.</h1>
+          <p class="italic">I am a ready to be your portfolio, telling your stories and short presentations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /.navbar-->
+<!-- about-->
+<section id="about" class="text">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <p><img src="{% static 'images/georgina_nogueira2.png' %}" alt="" class="img-responsive img-circle"></p>
+      </div>
+      <div class="col-md-6">
+        <h2 class="heading">Sobre mim</h2>
+        {# <p class="lead">This can be an about section.</p> #}
+        <p>
+          Em 2004, ainda trabalhando como advogada em Recife, passei umas férias em Parnaíba e conheci a casa das rendeiras, associação localizada em um município próximo ao meu, Ilha Grande, numa localidade mais conhecida como Morros da Mariana.
+        </p>
+        <p>
+          Fiquei encantada com o trabalho que vi, e isso só me fez ter mais coragem e tomar uma atitude definitiva em minha vida: trabalhar com moda!!!
+          Dois anos depois, voltei a morar em Parnaíba, quando, passamos a firmar uma sólida parceria para criarmos peças de renda de bilro, sempre procurando seguir as tendências atuais, através de um intenso trabalho de pesquisa e estudos constantes.
+        </p>
+        <p>
+          E a marca Georgina Nogueira abriu seu ateliê em 2007, onde desde então expõe as mais variadas peças do guarda roupa feminino, além de acessórios, elaborados por artesãos que demonstram cultura e sensibilidade fazendo da arte em renda e outros elementos regionais a essência de suas vidas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- about end-->
+{% endblock %}
