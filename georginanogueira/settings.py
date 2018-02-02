@@ -16,6 +16,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+PREPEND_WWW = True
+
 
 # Application definition
 
