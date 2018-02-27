@@ -28,10 +28,6 @@ class Images(models.Model):
     )
     created_by = models.ForeignKey(User)
 
-    def save(self, *args, **kwargs):
-        self.image_thumbnail = self.image
-        super(Images, self).save(*args, **kwargs)
-
     def save_slug(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Images, self).save(*args, **kwargs)
