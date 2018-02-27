@@ -1,10 +1,11 @@
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import index, comocomprar, galeria, contato, eventos,detail_eventos,detail_colecoes,detail_galeria
+from .views import index, home, comocomprar, galeria, contato, eventos,detail_eventos,detail_colecoes,detail_galeria
 
 urlpatterns = [
 	url(r'^$', index, name='index'),
+	url(r'^home/$', home, name='home'),
 	url(r'^galeria/$', galeria, name='all-galeria'),
 	url(r'^contato/$', contato, name='contato'),
 	url(r'^eventos/$', eventos, name='all-eventos'),

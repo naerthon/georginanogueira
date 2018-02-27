@@ -13,6 +13,11 @@ def index(request):
     context = dict(submenu=submenu())
     return render(request,template_name,context)
 
+def home(request):
+    template_name = 'home.html'
+    context = dict(submenu=submenu())
+    return render(request,template_name,context)
+
 def comocomprar(request):
     template_name = 'comocomprar.html'
     context = dict(submenu=submenu())
