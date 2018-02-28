@@ -7,6 +7,12 @@ from django.core.validators   import MaxValueValidator,MinValueValidator,MinLeng
 from django.template.defaultfilters import slugify
 
 
+import os.path
+from PIL import Image
+from io import BytesIO
+from django.core.files.base import ContentFile 
+from django.core.files.uploadedfile import SimpleUploadedFile
+
 class Images(models.Model):
     def image_path(self, filename):
         return 'images/{}/'.format(filename)
@@ -25,12 +31,39 @@ class Images(models.Model):
         processors=[ResizeToFill(319, 200)],
         format='JPEG',
         options={'quality': 80},
+        null=True,
+        blank=True,
     )
+
     created_by = models.ForeignKey(User)
 
     def save_slug(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Images, self).save(*args, **kwargs)
+
+    def create_thumbnail(self):
+        image = Image.open(self.image)
+        thumb_name, thumb_extension = os.path.splitext(self.image.name)
+        thumb_extension = thumb_extension.lower()
+        thumb_filename = thumb_name + '_thumb' + thumb_extension
+        if thumb_extension in ['.jpg', '.jpeg']:
+            FTYPE = 'JPEG'
+        elif thumb_extension == '.gif':
+            FTYPE = 'GIF'
+        elif thumb_extension == '.png':
+            FTYPE = 'PNG'
+        else:
+            return False    # Unrecognized file type
+        temp_thumb = BytesIO()
+        image.save(temp_thumb, FTYPE)
+        temp_thumb.seek(0)
+        suf = SimpleUploadedFile(os.path.split(self.image.name)[-1],
+             temp_thumb.read())
+        self.image_thumbnail.save('%s_thumbnail.%s'%(os.path.splitext(suf.name)[0],FTYPE), suf, save=False)
+
+    def save(self):
+        self.create_thumbnail()
+        super(Images, self).save()
 
     class Meta:
         verbose_name = "Imagem"
