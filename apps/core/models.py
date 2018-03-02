@@ -109,7 +109,7 @@ class ElasUsam(models.Model):
         return self.title
 
 class Galeria(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     desc = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     date = models.DateTimeField(blank=True, null=True)
